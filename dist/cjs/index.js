@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.DEFAULT_API_BASE_URL = exports.PLAYER_NETWORK_ORIGIN = exports.signupHref = exports.copyFor = exports.PlayerNetworkCard = void 0;
+var PlayerNetworkCard_js_1 = require("./PlayerNetworkCard.js");
+Object.defineProperty(exports, "PlayerNetworkCard", { enumerable: true, get: function () { return PlayerNetworkCard_js_1.PlayerNetworkCard; } });
+var copy_js_1 = require("./copy.js");
+Object.defineProperty(exports, "copyFor", { enumerable: true, get: function () { return copy_js_1.copyFor; } });
+Object.defineProperty(exports, "signupHref", { enumerable: true, get: function () { return copy_js_1.signupHref; } });
+Object.defineProperty(exports, "PLAYER_NETWORK_ORIGIN", { enumerable: true, get: function () { return copy_js_1.PLAYER_NETWORK_ORIGIN; } });
+Object.defineProperty(exports, "DEFAULT_API_BASE_URL", { enumerable: true, get: function () { return copy_js_1.DEFAULT_API_BASE_URL; } });
