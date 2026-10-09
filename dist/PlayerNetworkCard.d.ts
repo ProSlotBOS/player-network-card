@@ -18,6 +18,9 @@ export interface PlayerNetworkCardProps {
     orgId: string;
     apiBaseUrl?: string;
     className?: string;
+    /** The network's mark beside the heading. Pass null to leave it out. */
+    logoUrl?: string | null;
+    logoClassName?: string;
     headingClassName?: string;
     bodyClassName?: string;
     offerClassName?: string;
@@ -25,4 +28,4 @@ export interface PlayerNetworkCardProps {
     /** Skip the org-flag read and render regardless. For previews and tests only. */
     forceEnabled?: boolean;
 }
-export declare function PlayerNetworkCard({ audience, orgId, apiBaseUrl, forceEnabled, className, headingClassName, bodyClassName, offerClassName, ctaClassName, }: PlayerNetworkCardProps): React.JSX.Element | null;
+export declare function PlayerNetworkCard({ audience, orgId, apiBaseUrl, forceEnabled, className, logoUrl, logoClassName, headingClassName, bodyClassName, offerClassName, ctaClassName, }: PlayerNetworkCardProps): React.JSX.Element | null;

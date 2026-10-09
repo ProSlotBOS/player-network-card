@@ -1,8 +1,9 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useEffect, useState } from 'react';
-import { copyFor, signupHref, DEFAULT_API_BASE_URL } from './copy.js';
+import { copyFor, signupHref, DEFAULT_API_BASE_URL, PLAYER_NETWORK_LOGO_URL } from './copy.js';
 const DEFAULTS = {
     className: 'rounded-2xl border border-slate-200 bg-white p-5 shadow-sm',
+    logoClassName: 'h-10 w-10 shrink-0 rounded-xl',
     headingClassName: 'text-lg font-bold text-slate-900',
     bodyClassName: 'mt-1 text-sm text-slate-600',
     offerClassName: 'mt-2 text-sm font-semibold text-emerald-700',
@@ -19,7 +20,7 @@ async function readJson(url, headers) {
         return null;
     }
 }
-export function PlayerNetworkCard({ audience, orgId, apiBaseUrl = DEFAULT_API_BASE_URL, forceEnabled = false, className = DEFAULTS.className, headingClassName = DEFAULTS.headingClassName, bodyClassName = DEFAULTS.bodyClassName, offerClassName = DEFAULTS.offerClassName, ctaClassName = DEFAULTS.ctaClassName, }) {
+export function PlayerNetworkCard({ audience, orgId, apiBaseUrl = DEFAULT_API_BASE_URL, forceEnabled = false, className = DEFAULTS.className, logoUrl = PLAYER_NETWORK_LOGO_URL, logoClassName = DEFAULTS.logoClassName, headingClassName = DEFAULTS.headingClassName, bodyClassName = DEFAULTS.bodyClassName, offerClassName = DEFAULTS.offerClassName, ctaClassName = DEFAULTS.ctaClassName, }) {
     const [enabled, setEnabled] = useState(forceEnabled);
     const [promos, setPromos] = useState(null);
     useEffect(() => {
@@ -43,5 +44,5 @@ export function PlayerNetworkCard({ audience, orgId, apiBaseUrl = DEFAULT_API_BA
     if (!enabled)
         return null;
     const text = copyFor(audience, promos);
-    return (_jsxs("div", { className: className, "data-player-network-card": audience, children: [_jsx("p", { className: headingClassName, children: text.heading }), _jsx("p", { className: bodyClassName, children: text.body }), text.offer ? _jsx("p", { className: offerClassName, children: text.offer }) : null, _jsx("a", { href: signupHref(audience, orgId), target: "_blank", rel: "noopener", className: ctaClassName, children: text.cta })] }));
+    return (_jsxs("div", { className: className, "data-player-network-card": audience, children: [_jsxs("div", { className: "flex items-start gap-3", children: [logoUrl ? _jsx("img", { src: logoUrl, alt: "ProSlot Player Network", width: 40, height: 40, className: logoClassName }) : null, _jsxs("div", { className: "min-w-0", children: [_jsx("p", { className: headingClassName, children: text.heading }), _jsx("p", { className: bodyClassName, children: text.body })] })] }), text.offer ? _jsx("p", { className: offerClassName, children: text.offer }) : null, _jsx("a", { href: signupHref(audience, orgId), target: "_blank", rel: "noopener", className: ctaClassName, children: text.cta })] }));
 }

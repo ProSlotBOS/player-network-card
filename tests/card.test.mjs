@@ -48,4 +48,10 @@ describe('component', () => {
     assert.match(html, /utm_source=tcblackhawks/);
     assert.match(html, /rel="noopener"/);
   });
+  test('carries the network\'s mark, and leaves it out when told to', () => {
+    const withLogo = renderToStaticMarkup(React.createElement(PlayerNetworkCard, { audience: 'parent', orgId: 'x', forceEnabled: true }));
+    assert.match(withLogo, /<img src="https:\/\/www\.proslotplayernetwork\.com\/logo\.png" alt="ProSlot Player Network"/);
+    const without = renderToStaticMarkup(React.createElement(PlayerNetworkCard, { audience: 'parent', orgId: 'x', forceEnabled: true, logoUrl: null }));
+    assert.doesNotMatch(without, /<img/);
+  });
 });

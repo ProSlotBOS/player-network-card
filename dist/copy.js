@@ -1,4 +1,6 @@
 export const PLAYER_NETWORK_ORIGIN = 'https://www.proslotplayernetwork.com';
+/** The network's own mark, served by its site so every card shows the same asset. */
+export const PLAYER_NETWORK_LOGO_URL = `${PLAYER_NETWORK_ORIGIN}/logo.png`;
 /** The ProSlot API, in the current Cloud Run URL format. */
 export const DEFAULT_API_BASE_URL = 'https://proslot-api-473053764604.us-central1.run.app';
 export function copyFor(audience, promos) {

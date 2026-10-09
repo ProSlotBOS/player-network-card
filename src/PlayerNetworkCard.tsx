@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { copyFor, signupHref, DEFAULT_API_BASE_URL, type Audience, type Promos } from './copy.js';
+import { copyFor, signupHref, DEFAULT_API_BASE_URL, PLAYER_NETWORK_LOGO_URL, type Audience, type Promos } from './copy.js';
 
 /**
  * The "Short a player this weekend?" card.
@@ -19,6 +19,9 @@ export interface PlayerNetworkCardProps {
   orgId: string;
   apiBaseUrl?: string;
   className?: string;
+  /** The network's mark beside the heading. Pass null to leave it out. */
+  logoUrl?: string | null;
+  logoClassName?: string;
   headingClassName?: string;
   bodyClassName?: string;
   offerClassName?: string;
@@ -29,6 +32,7 @@ export interface PlayerNetworkCardProps {
 
 const DEFAULTS = {
   className: 'rounded-2xl border border-slate-200 bg-white p-5 shadow-sm',
+  logoClassName: 'h-10 w-10 shrink-0 rounded-xl',
   headingClassName: 'text-lg font-bold text-slate-900',
   bodyClassName: 'mt-1 text-sm text-slate-600',
   offerClassName: 'mt-2 text-sm font-semibold text-emerald-700',
@@ -51,6 +55,8 @@ export function PlayerNetworkCard({
   apiBaseUrl = DEFAULT_API_BASE_URL,
   forceEnabled = false,
   className = DEFAULTS.className,
+  logoUrl = PLAYER_NETWORK_LOGO_URL,
+  logoClassName = DEFAULTS.logoClassName,
   headingClassName = DEFAULTS.headingClassName,
   bodyClassName = DEFAULTS.bodyClassName,
   offerClassName = DEFAULTS.offerClassName,
@@ -80,8 +86,13 @@ export function PlayerNetworkCard({
   const text = copyFor(audience, promos);
   return (
     <div className={className} data-player-network-card={audience}>
-      <p className={headingClassName}>{text.heading}</p>
-      <p className={bodyClassName}>{text.body}</p>
+      <div className="flex items-start gap-3">
+        {logoUrl ? <img src={logoUrl} alt="ProSlot Player Network" width={40} height={40} className={logoClassName} /> : null}
+        <div className="min-w-0">
+          <p className={headingClassName}>{text.heading}</p>
+          <p className={bodyClassName}>{text.body}</p>
+        </div>
+      </div>
       {text.offer ? <p className={offerClassName}>{text.offer}</p> : null}
       <a href={signupHref(audience, orgId)} target="_blank" rel="noopener" className={ctaClassName}>
         {text.cta}

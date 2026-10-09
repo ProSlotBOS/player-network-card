@@ -1,9 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DEFAULT_API_BASE_URL = exports.PLAYER_NETWORK_ORIGIN = void 0;
+exports.DEFAULT_API_BASE_URL = exports.PLAYER_NETWORK_LOGO_URL = exports.PLAYER_NETWORK_ORIGIN = void 0;
 exports.copyFor = copyFor;
 exports.signupHref = signupHref;
 exports.PLAYER_NETWORK_ORIGIN = 'https://www.proslotplayernetwork.com';
+/** The network's own mark, served by its site so every card shows the same asset. */
+exports.PLAYER_NETWORK_LOGO_URL = `${exports.PLAYER_NETWORK_ORIGIN}/logo.png`;
 /** The ProSlot API, in the current Cloud Run URL format. */
 exports.DEFAULT_API_BASE_URL = 'https://proslot-api-473053764604.us-central1.run.app';
 function copyFor(audience, promos) {
