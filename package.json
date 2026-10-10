@@ -1,6 +1,6 @@
 {
   "name": "@proslotbosllc/player-network-card",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "The \"Short a player this weekend?\" card a ProSlot league or facility site shows its coaches and families, pointing them to ProSlot Player Network. Opt-in per organization.",
   "type": "module",
   "main": "./dist/index.js",
